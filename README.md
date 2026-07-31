@@ -149,7 +149,7 @@ public unsafe class Sample : JniObject
         args[1].I = arg1;
 
         var result = env->CallStaticIntMethodA(Class, add_MethodId, args);
-        return (int)result;
+        return result;
     }
     /// <summary>
     /// To be documented

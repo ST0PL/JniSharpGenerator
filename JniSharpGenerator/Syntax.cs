@@ -21,7 +21,7 @@ namespace JniSharpGenerator
             {
                 "" => "void", // for constructors
                 "void" => "void",
-                "byte" => "byte",
+                "byte" => "sbyte",
                 "short" => "short",
                 "int" => "int",
                 "long" => "long",
@@ -211,7 +211,7 @@ namespace JniSharpGenerator
                 sb.AppendLine($"        {env}->DeleteLocalRef(result);");
                 sb.AppendLine("        return stringResult;");
             }
-            else if (type != "void" && type != "JObject*")
+            else if (type != "JObject*" && type.EndsWith('*'))
                 sb.AppendLine($"        return ({type})result;");
             else if(type != "void")
                 sb.AppendLine("        return result;");

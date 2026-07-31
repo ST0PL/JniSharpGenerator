@@ -121,7 +121,7 @@ public unsafe class InputStream : JniObject
     public int Read()
     {
         var result = _env->CallIntMethod(Object, read0_MethodId);
-        return (int)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -134,7 +134,7 @@ public unsafe class InputStream : JniObject
         args[0].L = (JObject*)arg0;
 
         var result = _env->CallIntMethodA(Object, read1_MethodId, args);
-        return (int)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -149,7 +149,7 @@ public unsafe class InputStream : JniObject
         args[2].I = arg2;
 
         var result = _env->CallIntMethodA(Object, read2_MethodId, args);
-        return (int)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -185,7 +185,7 @@ public unsafe class InputStream : JniObject
         args[2].I = arg2;
 
         var result = _env->CallIntMethodA(Object, readNBytes1_MethodId, args);
-        return (int)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -197,7 +197,7 @@ public unsafe class InputStream : JniObject
         args[0].J = arg0;
 
         var result = _env->CallLongMethodA(Object, skip_MethodId, args);
-        return (long)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -217,7 +217,7 @@ public unsafe class InputStream : JniObject
     public int Available()
     {
         var result = _env->CallIntMethod(Object, available_MethodId);
-        return (int)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -253,7 +253,7 @@ public unsafe class InputStream : JniObject
     public bool MarkSupported()
     {
         var result = _env->CallBooleanMethod(Object, markSupported_MethodId);
-        return (bool)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -266,6 +266,6 @@ public unsafe class InputStream : JniObject
         args[0].L = arg0;
 
         var result = _env->CallLongMethodA(Object, transferTo_MethodId, args);
-        return (long)result;
+        return result;
     }
 }
