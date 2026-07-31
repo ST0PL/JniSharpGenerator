@@ -499,7 +499,7 @@ public unsafe class PrintStream : JniObject
     public bool CheckError()
     {
         var result = _env->CallBooleanMethod(Object, checkError_MethodId);
-        return (bool)result;
+        return result;
     }
     /// <summary>
     /// To be documented

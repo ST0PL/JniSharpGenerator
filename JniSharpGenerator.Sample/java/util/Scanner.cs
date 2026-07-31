@@ -1325,15 +1325,15 @@ public unsafe class Scanner : JniObject
     /// <param name="arg0">java.io.InputStream</param>
     /// <param name="arg1">java.nio.charset.Charset</param>
     /// <returns>java.lang.Readable</returns>
-    public static JObject* MakeReadable(JniEnv* env, InputStream arg0, JObject* arg1)
-    {
-        JValue* args = stackalloc JValue[2];
-        args[0].L = arg0.Object;
-        args[1].L = arg1;
+    //public static JObject* MakeReadable(JniEnv* env, JObject* arg0, JObject* arg1)
+    //{
+    //    JValue* args = stackalloc JValue[2];
+    //    args[0].L = arg0;
+    //    args[1].L = arg1;
 
-        var result = env->CallStaticObjectMethodA(Class, makeReadable1_MethodId, args);
-        return result;
-    }
+    //    var result = env->CallStaticObjectMethodA(Class, makeReadable1_MethodId, args);
+    //    return result;
+    //}
     /// <summary>
     /// To be documented
     /// </summary>
@@ -1419,7 +1419,7 @@ public unsafe class Scanner : JniObject
         args[0].Z = (byte)(arg0 ? 1 : 0);
 
         var result = _env->CallBooleanMethodA(Object, revertState1_MethodId, args);
-        return (bool)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -1486,7 +1486,7 @@ public unsafe class Scanner : JniObject
     public bool MakeSpace()
     {
         var result = _env->CallBooleanMethod(Object, makeSpace_MethodId);
-        return (bool)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -1514,7 +1514,7 @@ public unsafe class Scanner : JniObject
     public bool HasTokenInBuffer()
     {
         var result = _env->CallBooleanMethod(Object, hasTokenInBuffer_MethodId);
-        return (bool)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -1543,7 +1543,7 @@ public unsafe class Scanner : JniObject
         args[1].I = arg1;
 
         var result = _env->CallBooleanMethodA(Object, findPatternInBuffer_MethodId, args);
-        return (bool)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -1556,7 +1556,7 @@ public unsafe class Scanner : JniObject
         args[0].L = arg0;
 
         var result = _env->CallBooleanMethodA(Object, matchPatternInBuffer_MethodId, args);
-        return (bool)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -1650,7 +1650,7 @@ public unsafe class Scanner : JniObject
     public int Radix()
     {
         var result = _env->CallIntMethod(Object, radix_MethodId);
-        return (int)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -1702,7 +1702,7 @@ public unsafe class Scanner : JniObject
     public bool HasNext()
     {
         var result = _env->CallBooleanMethod(Object, hasNext0_MethodId);
-        return (bool)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -1718,7 +1718,7 @@ public unsafe class Scanner : JniObject
         var result = _env->CallBooleanMethodA(Object, hasNext1_MethodId, args);
         _env->DeleteLocalRef(stringArg0);
 
-        return (bool)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -1731,7 +1731,7 @@ public unsafe class Scanner : JniObject
         args[0].L = arg0;
 
         var result = _env->CallBooleanMethodA(Object, hasNext2_MethodId, args);
-        return (bool)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -1801,7 +1801,7 @@ public unsafe class Scanner : JniObject
     public bool HasNextLine()
     {
         var result = _env->CallBooleanMethod(Object, hasNextLine_MethodId);
-        return (bool)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -1918,7 +1918,7 @@ public unsafe class Scanner : JniObject
     public bool HasNextBoolean()
     {
         var result = _env->CallBooleanMethod(Object, hasNextBoolean_MethodId);
-        return (bool)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -1927,7 +1927,7 @@ public unsafe class Scanner : JniObject
     public bool NextBoolean()
     {
         var result = _env->CallBooleanMethod(Object, nextBoolean_MethodId);
-        return (bool)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -1936,7 +1936,7 @@ public unsafe class Scanner : JniObject
     public bool HasNextByte()
     {
         var result = _env->CallBooleanMethod(Object, hasNextByte0_MethodId);
-        return (bool)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -1948,28 +1948,28 @@ public unsafe class Scanner : JniObject
         args[0].I = arg0;
 
         var result = _env->CallBooleanMethodA(Object, hasNextByte1_MethodId, args);
-        return (bool)result;
+        return result;
     }
     /// <summary>
     /// To be documented
     /// </summary>
     /// <returns>byte</returns>
-    public byte NextByte()
+    public sbyte NextByte()
     {
         var result = _env->CallByteMethod(Object, nextByte0_MethodId);
-        return (byte)result;
+        return result;
     }
     /// <summary>
     /// To be documented
     /// </summary>
     /// <returns>byte</returns>
-    public byte NextByte(int arg0)
+    public sbyte NextByte(int arg0)
     {
         JValue* args = stackalloc JValue[1];
         args[0].I = arg0;
 
         var result = _env->CallByteMethodA(Object, nextByte1_MethodId, args);
-        return (byte)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -1978,7 +1978,7 @@ public unsafe class Scanner : JniObject
     public bool HasNextShort()
     {
         var result = _env->CallBooleanMethod(Object, hasNextShort0_MethodId);
-        return (bool)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -1990,7 +1990,7 @@ public unsafe class Scanner : JniObject
         args[0].I = arg0;
 
         var result = _env->CallBooleanMethodA(Object, hasNextShort1_MethodId, args);
-        return (bool)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -1999,7 +1999,7 @@ public unsafe class Scanner : JniObject
     public short NextShort()
     {
         var result = _env->CallShortMethod(Object, nextShort0_MethodId);
-        return (short)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -2011,7 +2011,7 @@ public unsafe class Scanner : JniObject
         args[0].I = arg0;
 
         var result = _env->CallShortMethodA(Object, nextShort1_MethodId, args);
-        return (short)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -2020,7 +2020,7 @@ public unsafe class Scanner : JniObject
     public bool HasNextInt()
     {
         var result = _env->CallBooleanMethod(Object, hasNextInt0_MethodId);
-        return (bool)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -2032,7 +2032,7 @@ public unsafe class Scanner : JniObject
         args[0].I = arg0;
 
         var result = _env->CallBooleanMethodA(Object, hasNextInt1_MethodId, args);
-        return (bool)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -2059,7 +2059,7 @@ public unsafe class Scanner : JniObject
     public int NextInt()
     {
         var result = _env->CallIntMethod(Object, nextInt0_MethodId);
-        return (int)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -2071,7 +2071,7 @@ public unsafe class Scanner : JniObject
         args[0].I = arg0;
 
         var result = _env->CallIntMethodA(Object, nextInt1_MethodId, args);
-        return (int)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -2080,7 +2080,7 @@ public unsafe class Scanner : JniObject
     public bool HasNextLong()
     {
         var result = _env->CallBooleanMethod(Object, hasNextLong0_MethodId);
-        return (bool)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -2092,7 +2092,7 @@ public unsafe class Scanner : JniObject
         args[0].I = arg0;
 
         var result = _env->CallBooleanMethodA(Object, hasNextLong1_MethodId, args);
-        return (bool)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -2101,7 +2101,7 @@ public unsafe class Scanner : JniObject
     public long NextLong()
     {
         var result = _env->CallLongMethod(Object, nextLong0_MethodId);
-        return (long)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -2113,7 +2113,7 @@ public unsafe class Scanner : JniObject
         args[0].I = arg0;
 
         var result = _env->CallLongMethodA(Object, nextLong1_MethodId, args);
-        return (long)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -2140,7 +2140,7 @@ public unsafe class Scanner : JniObject
     public bool HasNextFloat()
     {
         var result = _env->CallBooleanMethod(Object, hasNextFloat_MethodId);
-        return (bool)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -2149,7 +2149,7 @@ public unsafe class Scanner : JniObject
     public float NextFloat()
     {
         var result = _env->CallFloatMethod(Object, nextFloat_MethodId);
-        return (float)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -2158,7 +2158,7 @@ public unsafe class Scanner : JniObject
     public bool HasNextDouble()
     {
         var result = _env->CallBooleanMethod(Object, hasNextDouble_MethodId);
-        return (bool)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -2167,7 +2167,7 @@ public unsafe class Scanner : JniObject
     public double NextDouble()
     {
         var result = _env->CallDoubleMethod(Object, nextDouble_MethodId);
-        return (double)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -2176,7 +2176,7 @@ public unsafe class Scanner : JniObject
     public bool HasNextBigInteger()
     {
         var result = _env->CallBooleanMethod(Object, hasNextBigInteger0_MethodId);
-        return (bool)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -2188,7 +2188,7 @@ public unsafe class Scanner : JniObject
         args[0].I = arg0;
 
         var result = _env->CallBooleanMethodA(Object, hasNextBigInteger1_MethodId, args);
-        return (bool)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -2218,7 +2218,7 @@ public unsafe class Scanner : JniObject
     public bool HasNextBigDecimal()
     {
         var result = _env->CallBooleanMethod(Object, hasNextBigDecimal_MethodId);
-        return (bool)result;
+        return result;
     }
     /// <summary>
     /// To be documented

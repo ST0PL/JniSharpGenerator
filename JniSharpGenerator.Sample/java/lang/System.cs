@@ -412,7 +412,7 @@ public unsafe class System : JniObject
     public static long CurrentTimeMillis(JniEnv* env)
     {
         var result = env->CallStaticLongMethod(Class, currentTimeMillis_MethodId);
-        return (long)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -421,7 +421,7 @@ public unsafe class System : JniObject
     public static long NanoTime(JniEnv* env)
     {
         var result = env->CallStaticLongMethod(Class, nanoTime_MethodId);
-        return (long)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -451,7 +451,7 @@ public unsafe class System : JniObject
         args[0].L = arg0;
 
         var result = env->CallStaticIntMethodA(Class, identityHashCode_MethodId, args);
-        return (int)result;
+        return result;
     }
     /// <summary>
     /// To be documented
@@ -787,7 +787,7 @@ public unsafe class System : JniObject
         args[1].Z = (byte)(arg1 ? 1 : 0);
 
         var result = env->CallStaticIntMethodA(Class, initPhase2_MethodId, args);
-        return (int)result;
+        return result;
     }
     /// <summary>
     /// To be documented
