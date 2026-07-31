@@ -1,0 +1,3 @@
+[submodule "JavaNETInterface"]
+	path = JavaNETInterface
+	url = https://github.com/ST0PL/JavaNETInterface

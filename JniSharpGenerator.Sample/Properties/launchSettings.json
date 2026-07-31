@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "JniSharpGenerator.Sample": {
+      "commandName": "Executable",
+      "executablePath": "cmd.exe",
+      "commandLineArgs": "/k Run.bat\n",
+      "workingDirectory": "$(ProjectDir)"
+    }
+  }
+}
