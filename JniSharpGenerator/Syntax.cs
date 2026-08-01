@@ -248,27 +248,26 @@ namespace JniSharpGenerator
         {
             StringBuilder sb = new();
             string paramDoc = accessorType == AccessorType.Setter ? $"\n    /// <param name=\"value\">{jField.Type}</param>" : string.Empty;
-            string type = ConvertType(jField.Type);
+            string convertedType = ConvertType(jField.Type);
             string env = jField.IsStatic ? "env" : "_env";
             string cleanedFieldName = jField.Name.Replace("$", "_");
             string prefix = accessorType == AccessorType.Getter ? "Get" : "Set";
 
-            if (type == "JObject*")
-                sb.AppendLine(
-                    $"""
-                        /// <summary>
-                        /// To be documented
-                        /// </summary>{paramDoc}
-                        {(accessorType == AccessorType.Getter ? $"/// <returns>{jField.Type}</returns>" : string.Empty)}
-                    """);
-            sb.AppendLine($"    public {(jField.IsStatic ? "static " : "")}{(accessorType == AccessorType.Getter ? type : "void")} {prefix}{FirstCharToUpper(cleanedFieldName)}({GetAccessorArgs(jField, accessorType)})");
+            sb.AppendLine(
+                $"""
+                    /// <summary>
+                    /// To be documented
+                    /// </summary>{paramDoc}
+                    {(accessorType == AccessorType.Getter ? $"/// <returns>{jField.Type}</returns>" : string.Empty)}
+                """);
+            sb.AppendLine($"    public {(jField.IsStatic ? "static " : "")}{(accessorType == AccessorType.Getter ? convertedType : "void")} {prefix}{FirstCharToUpper(cleanedFieldName)}({GetAccessorArgs(jField, accessorType)})");
             sb.AppendLine("    {");
 
             string? refToDelete = null;
 
             if (accessorType == AccessorType.Setter)
             {
-                if (type == "string")
+                if (convertedType == "string")
                 {
                     sb.AppendLine($"        JObject* stringValue = (JObject*){env}->NewStringUTF(value);");
                     sb.AppendLine("        " + GetFieldSetCall(jField, cleanedFieldName, "stringValue"));
@@ -283,14 +282,17 @@ namespace JniSharpGenerator
             if (refToDelete != null)
                 sb.AppendLine("        " + $"{env}->DeleteLocalRef({refToDelete});");
 
-            if (accessorType == AccessorType.Getter && type == "string")
+            if (accessorType == AccessorType.Getter && convertedType == "string")
             {
                 sb.AppendLine($"        string stringResult = {env}->JStringToString((JString*)result);");
                 sb.AppendLine($"        {env}->DeleteLocalRef(result);");
                 sb.AppendLine("        return stringResult;");
             }
             else if (accessorType == AccessorType.Getter)
-                sb.AppendLine($"        return result;");
+            {
+                string typeCasting = !IsPrimitive(jField.Type) && convertedType != "JObject*" ? $"({convertedType})" : string.Empty;
+                sb.AppendLine($"        return {typeCasting}result;");
+            }
 
             sb.Append("    }");
 
@@ -417,9 +419,10 @@ namespace JniSharpGenerator
             string @static = field.IsStatic ? "Static" : string.Empty;
             string type = IsPrimitive(field.Type) ? FirstCharToUpper(field.Type) : "Object";
             string source = field.IsStatic ? "Class" : "Object";
-            string argPrefix = type == "JArray*" ? "(JObject*)" : string.Empty;
+            bool needCasting = type == "Object" && ConvertType(field.Type) != "JObject*";
+            string typeCasting = needCasting ? "(JObject*)" : string.Empty;
 
-            return $"{env}->Set{@static}{type}Field({source}, {fieldName}_FieldId, {argPrefix}{argName});";
+            return $"{env}->Set{@static}{type}Field({source}, {fieldName}_FieldId, {typeCasting}{argName});";
         }
 
         private static List<MethodData> GroupMethodOverloads(IEnumerable<JavaMethod> methods)
