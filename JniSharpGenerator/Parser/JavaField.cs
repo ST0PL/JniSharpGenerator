@@ -2,7 +2,7 @@
 
 namespace JniSharpGenerator.Parser
 {
-    internal class JavaField : JavaEntity
+    public class JavaField : JavaEntity
     {
         public string Type { get; }
 

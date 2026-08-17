@@ -5,6 +5,10 @@
   <Project Path="JavaNETInterface/JavaNETInterface/JavaNETInterface.csproj">
     <Platform Project="x64" />
   </Project>
+  <Project Path="JniSharpGenerator.CLI/JniSharpGenerator.CLI.csproj" Id="30e707c2-f071-4ed7-8620-45f7f04d7180">
+    <Platform Project="x64" />
+    <Build Solution="Debug|*" Project="false" />
+  </Project>
   <Project Path="JniSharpGenerator.Sample/JniSharpGenerator.Sample.csproj">
     <Platform Project="x64" />
   </Project>

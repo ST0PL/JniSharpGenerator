@@ -1,6 +1,6 @@
 ﻿namespace JniSharpGenerator.Parser
 {
-    internal enum AccessModifier
+    public enum AccessModifier
     {
         PackagePrivate,
         Private,

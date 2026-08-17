@@ -45,10 +45,10 @@ public static unsafe class JAgent
         java.lang.System.GetOut(jniEnv).Println("[NativeAOT] JVM initialized.");
     }
 
-    [UnmanagedCallersOnly(EntryPoint = "Java_JniSharpGenerator_Sample_Sample_nativeSharpMethod", CallConvs = [typeof(CallConvCdecl)])]
+    [UnmanagedCallersOnly(EntryPoint = "Java_JniSharpGenerator_Sample_JavaSample_nativeSharpMethod", CallConvs = [typeof(CallConvCdecl)])]
     public static void NativeSharpMethod(JniEnv* env, JClass* klass)
     {
-        Sample.Initialize(env);
+        JavaSample.Initialize(env);
 
         PrintStream outStream = java.lang.System.GetOut(env);
 
@@ -58,7 +58,7 @@ public static unsafe class JAgent
         
         int param = scanner.NextInt();
 
-        outStream.Println($"[NativeAOT] Result of {Sample.GetValue(env)} + {param} is {Sample.Add(env, Sample.GetValue(env), param)}");
+        outStream.Println($"[NativeAOT] Result of {JavaSample.GetValue(env)} + {param} is {JavaSample.Add(env, JavaSample.GetValue(env), param)}");
 
         scanner.Close();
     }

@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace JniSharpGenerator
+namespace JniSharpGenerator.CLI
 {
     internal class Options(bool generateAccessors, bool saveToFile, string destination, string javapOptions, IReadOnlyList<string> unknownOptions)
     {

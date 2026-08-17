@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 using JniSharpGenerator.Exceptions;
 using JniSharpGenerator.Parser;
 
-namespace JniSharpGenerator
+namespace JniSharpGenerator.CLI
 {
     internal class Program
     {

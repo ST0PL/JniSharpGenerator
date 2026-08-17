@@ -2,7 +2,7 @@
 
 namespace JniSharpGenerator.Parser
 {
-    internal class JavaClass : JavaEntity
+    public class JavaClass : JavaEntity
     {
         public string Package { get; }
         public IReadOnlyCollection<string> Annotations { get; }

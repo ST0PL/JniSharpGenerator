@@ -2,7 +2,7 @@
 
 namespace JniSharpGenerator.Parser
 {
-    internal partial class JavaMethod : JavaEntity
+    public partial class JavaMethod : JavaEntity
     {
         public string[] Throws { get; }
         public string[] Arguments { get; }
