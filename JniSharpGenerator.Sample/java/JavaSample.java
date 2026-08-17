@@ -1,6 +1,6 @@
 package JniSharpGenerator.Sample;
 
-public class Sample { 
+public class JavaSample { 
 
     public static int value;
 

@@ -1,4 +1,4 @@
 ﻿namespace JniSharpGenerator.Exceptions
 {
-    internal class JavaPrinterException(string? message) : Exception(message) { }
+    public class JavaPrinterException(string? message) : Exception(message) { }
 }

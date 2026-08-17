@@ -4,7 +4,7 @@ using JavaNETInterface.Wrappers;
 
 namespace JniSharpGenerator.Sample;
 
-public unsafe class Sample : JniObject
+public unsafe class JavaSample : JniObject
 {
     public static JClass* Class { get; private set; }
     private static readonly Lock lockObject = new();
@@ -12,12 +12,12 @@ public unsafe class Sample : JniObject
 
     private static JFieldID* value_FieldId;
 
-    private static JMethodID* Sample_MethodId;
+    private static JMethodID* JavaSample_MethodId;
     private static JMethodID* main_MethodId;
     private static JMethodID* add_MethodId;
     private static JMethodID* nativeSharpMethod_MethodId;
 
-    public Sample(JniEnv* env, JObject* obj) : base(env, obj)
+    public JavaSample(JniEnv* env, JObject* obj) : base(env, obj)
         => Initialize(env);
 
     public static void Initialize(JniEnv* env)
@@ -27,11 +27,11 @@ public unsafe class Sample : JniObject
             if(initialized)
                 return;
 
-            Class = env->FindClass("JniSharpGenerator/Sample/Sample");
+            Class = env->FindClass("JniSharpGenerator/Sample/JavaSample");
 
             value_FieldId = env->GetStaticFieldID(Class, "value", "I");
 
-            Sample_MethodId = env->GetMethodID(Class, "<init>", "()V");
+            JavaSample_MethodId = env->GetMethodID(Class, "<init>", "()V");
             main_MethodId = env->GetStaticMethodID(Class, "main", "([Ljava/lang/String;)V");
             add_MethodId = env->GetStaticMethodID(Class, "add", "(II)I");
             nativeSharpMethod_MethodId = env->GetStaticMethodID(Class, "nativeSharpMethod", "()V");
@@ -39,12 +39,21 @@ public unsafe class Sample : JniObject
             initialized = true;
         }
     }
+    /// <summary>
+    /// To be documented
+    /// </summary>
+    /// <returns>int</returns>
     public static int GetValue(JniEnv* env)
     {
         var result = env->GetStaticIntField(Class, value_FieldId);
         return result;
     }
 
+    /// <summary>
+    /// To be documented
+    /// </summary>
+    /// <param name="value">int</param>
+    
     public static void SetValue(JniEnv* env, int value)
     {
         env->SetStaticIntField(Class, value_FieldId, value);
@@ -53,10 +62,10 @@ public unsafe class Sample : JniObject
     /// <summary>
     /// To be documented
     /// </summary>
-    public static Sample Sample_Constructor(JniEnv* env)
+    public static JavaSample JavaSample_Constructor(JniEnv* env)
     {
         Initialize(env);
-        var result = env->NewObject(Class, Sample_MethodId);
+        var result = env->NewObject(Class, JavaSample_MethodId);
         return new(env, result);
     }
     /// <summary>

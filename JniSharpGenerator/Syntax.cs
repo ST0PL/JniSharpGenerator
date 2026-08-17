@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace JniSharpGenerator
 {
-    internal static class Syntax
+    public static class Syntax
     {
         private static readonly string[] _primitives = ["byte", "short", "int", "long", "float", "double", "char", "boolean"];
 

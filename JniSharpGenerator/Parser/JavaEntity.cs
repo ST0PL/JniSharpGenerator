@@ -1,6 +1,6 @@
 ﻿namespace JniSharpGenerator.Parser
 {
-    internal abstract class JavaEntity
+    public abstract class JavaEntity
     {
         public AccessModifier AccessModifier { get; }
         public string Name { get; }
